@@ -8,6 +8,8 @@ abstract class Routes {
   static const String leaders = '/leaders';
   static const String quests = '/quests';
   static const String knowledgeBase = '/knowledgeBase';
+
+    static const String profile = '/profile';
 }
 
 enum MenuRoute {

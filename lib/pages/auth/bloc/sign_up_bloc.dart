@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
@@ -21,11 +19,9 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         if (event is SignUpReg) {
           emit(SignUpLoading());
           response = await authService.regUser(
-            username: event.username,
+            login: event.login,
             password: event.password,
-            email: event.email,
-            fio: event.fio,
-            phone: event.phone,
+            name: event.name,
           );
         }
         if (response.contains("Token: ")) {

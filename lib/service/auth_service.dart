@@ -1,5 +1,7 @@
 // ignore_for_file: file_names
 
+import 'dart:io';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'api_service.dart';
@@ -18,19 +20,34 @@ class AuthService {
   }
 
   Future<String> loginUser({
-    required String username,
+    required String login,
     required String password,
   }) async {
-    dynamic data = await APIService.postRequest(
-      request: 'api/login',
-      data: {'username': username, 'password': password},
+    dynamic token = await APIService.postRequest(
+      request: 'api/auth/login',
+      data: {
+        "login": "Admin",
+        "password": "12345",
+      },
     );
-
     try {
-      if (data != '' && data['jwt'] != '') {
-        await prefs.setString('token', data['jwt']);
-        _token = data['jwt'];
-        return 'Token: ${data['jwt']}';
+      if (token != '' && token['accessToken'] != '') {
+        _token = token['accessToken'];
+
+        await prefs.setString('token', _token);
+
+        dynamic data = await APIService.postRequest(
+          request: 'api/users/login',
+          headers: {HttpHeaders.authorizationHeader: 'Bearer $_token'},
+          data: {
+            'login': login,
+            'password': password,
+          },
+        );
+
+        if (data != '') {
+          return 'Token: $_token';
+        }
       }
     } catch (e) {
       return 'Такого пользователя не существует или введен неправильный пароль.';
@@ -40,28 +57,36 @@ class AuthService {
   }
 
   Future<String> regUser({
-    required String username,
-    required String email,
+    required String login,
     required String password,
-    required String fio,
-    required String phone,
+    required String name,
   }) async {
-    dynamic data = await APIService.postRequest(
-      request: 'api/register',
+    dynamic token = await APIService.postRequest(
+      request: 'api/auth/login',
       data: {
-        'username': username,
-        'email': email,
-        'password': password,
-        'fio': fio,
-        'phone': phone,
+        "login": "Admin",
+        "password": "12345",
       },
     );
-
     try {
-      if (data != '' && data['username'] != '') {
-        await prefs.setString('token', data['username']);
-        _token = data['username'];
-        return 'Token: ${data['username']}';
+      if (token != '' && token['accessToken'] != '') {
+        _token = token['accessToken'];
+
+        await prefs.setString('token', _token);
+
+        dynamic data = await APIService.postRequest(
+          request: 'api/users',
+          headers: {HttpHeaders.authorizationHeader: 'Bearer $_token'},
+          data: {
+            'login': login,
+            'password': password,
+            "name": name,
+          },
+        );
+
+        if (data != '') {
+          return 'Token: $_token';
+        }
       }
     } catch (e) {
       print(e);

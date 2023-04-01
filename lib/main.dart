@@ -3,10 +3,12 @@ import 'package:flutter_simple_dependency_injection/injector.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile_app/pages/knowledge_base/knowledge_base.dart';
 import 'package:mobile_app/pages/leaders/leaders.dart';
+import 'package:mobile_app/pages/profile/profile_page.dart';
 import 'package:mobile_app/pages/quests/quests.dart';
 import 'package:mobile_app/pages/welcome/welcome_page.dart';
 
 import 'pages/auth/sign_in_page.dart';
+import 'pages/auth/sign_up_page.dart';
 import 'pages/main_page.dart';
 import 'pages/road/road.dart';
 import 'service/auth_service.dart';
@@ -86,6 +88,24 @@ class MyApp extends StatelessWidget {
                   
                 ],
               ),
+            ),
+          ),
+          GoRoute(
+            parentNavigatorKey: _rootNavigatorKey,
+            path: Routes.signUpPage,
+            pageBuilder: (context, state) => buildPageWithPopupTransition<void>(
+              context: context,
+              state: state,
+              child: SignUpPage(),
+            ),
+          ),
+          GoRoute(
+            parentNavigatorKey: _rootNavigatorKey,
+            path: Routes.profile,
+            pageBuilder: (context, state) => buildPageWithPopupTransition<void>(
+              context: context,
+              state: state,
+              child: ProfilePage(),
             ),
           ),
         ],

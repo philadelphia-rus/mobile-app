@@ -4,17 +4,13 @@ part of 'sign_up_bloc.dart';
 abstract class SignUpEvent {}
 
 class SignUpReg extends SignUpEvent {
-  final String username;
+  final String login;
   final String password;
-  final String email;
-  final String fio;
-  final String phone;
+  final String name;
 
   SignUpReg({
-    required this.username,
+    required this.login,
     required this.password,
-    required this.email,
-    required this.fio,
-    required this.phone,
+    required this.name,
   });
 }

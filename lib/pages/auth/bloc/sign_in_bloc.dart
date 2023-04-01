@@ -16,7 +16,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       if (event is SignInAuth) {
         emit(SignInLoading());
         response = await authService.loginUser(
-            username: event.username, password: event.password);
+            login: event.login, password: event.password);
       }
       if (response.contains('Token: ')) {
         emit(SignInSuccess(token: response));

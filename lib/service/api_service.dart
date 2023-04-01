@@ -2,15 +2,23 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class APIService {
-  static const url = 'http://94.131.97.26:8000';
+  static const url = 'http://neroun.duckdns.org:8080';
 
-  static Future<dynamic> postRequest(
-      {required String request,
-      Map<String, String> queryParameters = const {},
-      Map<String, String> data = const {}}) async {
+  static Future<dynamic> postRequest({
+    required String request,
+    Map<String, String> queryParameters = const {},
+    Map<String, String> data = const {},
+    Map<String, String> headers = const {},
+  }) async {
     try {
-      var response = await Dio()
-          .post('$url/$request', queryParameters: queryParameters, data: data);
+      var response = await Dio().post(
+        '$url/$request',
+        queryParameters: queryParameters,
+        data: data,
+        options: Options(
+          headers: headers,
+        ),
+      );
       debugPrint(response.toString());
       if (response.statusCode == 200) {
         return response.data;
