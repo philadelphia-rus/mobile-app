@@ -21,49 +21,14 @@ class SignInPage extends StatelessWidget {
             children: <Widget>[
               Flexible(flex: 2, child: Container()),
               Text(
-                    'Вход',
-                    style: TextStyle(
-                      fontFamily: 'VarelaRound',
-                      fontSize: 35,
-                    ),
-                  ),
-              Flexible(flex: 1, child: Container()),
-              Row(
-                children: [
-                  Text(
-                    'Введите логин',
-                    style: TextStyle(
-                      fontFamily: 'VarelaRound',
-                      fontSize: 18,
-                    ),
-                  ),
-                ],
+                'Введите имя',
+                style: TextStyle(
+                  fontFamily: 'VarelaRound',
+                  fontSize: 23,
+                ),
               ),
               SizedBox(
-                height: 10,
-              ),
-              PrimaryTextField(
-                controller: _loginTextControler,
-                labelText: '',
-                labelStyle: TextStyle(),
-                validator: (e) {},
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Row(
-                children: [
-                  Text(
-                    'Введите пароль',
-                    style: TextStyle(
-                      fontFamily: 'VarelaRound',
-                      fontSize: 18,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 10,
+                height: 20,
               ),
               PrimaryTextField(
                 controller: _loginTextControler,

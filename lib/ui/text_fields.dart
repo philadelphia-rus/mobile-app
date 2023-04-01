@@ -35,18 +35,18 @@ class PrimaryTextField extends StatelessWidget {
       keyboardType: textInputType,
       autofocus: autofocus,
       readOnly: readonly,
-      cursorColor: AppColors.colorEFEFEF,
+      cursorColor: AppColors.color7e56e8,
       controller: controller,
       obscureText: obscureText,
       validator: validator,
       decoration: InputDecoration(
         labelText: labelText,
         labelStyle: labelStyle,
-        enabledBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColors.colorEFEFEF, width: 2),
+        enabledBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: AppColors.color7e56e8, width: 2),
         ),
-        focusedBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColors.colorEFEFEF, width: 2),
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: AppColors.color7e56e8, width: 2),
         ),
       ),
     );
