@@ -15,7 +15,6 @@ class RoadPage extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            _buildHeader(),
             SingleChildScrollView(
               physics: NeverScrollableScrollPhysics(),
               child: Column(
@@ -34,12 +33,5 @@ class RoadPage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Widget _buildHeader() {
-    return Container(
-        // height: 50,
-        // color: Colors.red,
-        );
   }
 }

@@ -36,7 +36,7 @@ class _Header extends StatelessWidget {
           Material(
             color: Colors.transparent,
             child: IconButton(
-              icon: const Icon(Icons.logout_rounded),
+              icon: const Icon(Icons.person),
               tooltip: 'Logout',
               onPressed: () {
                 context.push(Routes.profile);

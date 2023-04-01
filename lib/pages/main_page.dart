@@ -27,6 +27,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade200,
       body: widget.child,
       bottomNavigationBar: _buildBottomNavigationBar(),
     );

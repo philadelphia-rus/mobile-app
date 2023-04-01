@@ -9,7 +9,7 @@ abstract class Routes {
   static const String quests = '/quests';
   static const String knowledgeBase = '/knowledgeBase';
 
-    static const String profile = '/profile';
+    static const String profile = '/knowledgeBase/profile';
 }
 
 enum MenuRoute {
