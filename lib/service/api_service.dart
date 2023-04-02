@@ -18,9 +18,9 @@ class APIService {
         '${url[index]}/$request',
         queryParameters: queryParameters,
         data: data,
-        // options: Options(
-        //   headers: headers,
-        // ),
+        options: Options(
+          headers: headers,
+        ),
       );
       print('${url[index]}/$request');
       debugPrint(response.toString());

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mobile_app/ui/pushable_button/pushable_button.dart';
 
 import '../utils/app_colors.dart';
 
 import 'dart:math' as math;
 
-class Unit extends StatefulWidget {
-  const Unit({
+class UnitWidget extends StatefulWidget {
+  const UnitWidget({
     super.key,
     required this.title,
     required this.description,
@@ -19,13 +20,13 @@ class Unit extends StatefulWidget {
   final String title;
   final String description;
   final int stepCount;
-  final List<Step> steps;
+  final List<Widget> steps;
 
   @override
-  State<Unit> createState() => _UnitState();
+  State<UnitWidget> createState() => _UnitWidgetState();
 }
 
-class _UnitState extends State<Unit> {
+class _UnitWidgetState extends State<UnitWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -74,52 +75,92 @@ class _UnitState extends State<Unit> {
             ),
           ),
         ),
-        SizedBox(height: 10,),
+        SizedBox(
+          height: 10,
+        ),
         SingleChildScrollView(
           physics: NeverScrollableScrollPhysics(),
-          child: SineWaveWidgets(),
+          child: SineWaveWidgets(
+            children: widget.steps,
+          ),
         ),
       ],
     );
   }
 }
 
-class Step extends StatelessWidget {
-  const Step({
+class StepWidget extends StatelessWidget {
+  const StepWidget({
     super.key,
+    required this.type,
+    required this.name,
+    this.mdFile,
+    this.video,
+    this.question,
   });
+
+  final String type;
+  final String name;
+  final String? mdFile;
+  final String? video;
+  final String? question;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         PushableButton(
-          child: Icon(Icons.star),
+          child: _buildIcon(),
           height: 60,
           width: 60,
           elevation: 6,
           hslColor: HSLColor.fromAHSL(1.0, 120, 1.0, 0.37),
-          onPressed: () => print('Button Pressed!'),
+          onPressed: () {},
         ),
-        SizedBox(width: 5,),
-        Text('Let`s start', style: TextStyle(fontSize: 18, fontFamily: 'VarelaRound')),
+        SizedBox(
+          width: 5,
+        ),
+        Text(name, style: TextStyle(fontSize: 18, fontFamily: 'VarelaRound')),
       ],
     );
+  }
+
+  Widget _buildIcon() {
+    if (type == 'MDFILE') {
+      return Icon(Icons.document_scanner_sharp);
+    } else if (type == 'QUESTIONS') {
+      return Icon(Icons.question_mark_rounded);
+    } else if (type == 'VIDEO') {
+      return Icon(Icons.play_arrow);
+    }
+    return Container();
+  }
+
+  void _onPressDo(BuildContext context) {
+    if (type == 'MDFILE') {
+      // URL OPEN
+      return context.go('Routes.mdfile');
+    }else if (type == 'QUESTIONS') {
+      return context.go('Routes.quiestion');
+    } else if (type == 'VIDEO') {
+      //URL open
+     return context.go('Routes.quiestion');
+    };
   }
 }
 
 class SineWaveWidgets extends StatefulWidget {
+  final List<Widget> children;
+
+  const SineWaveWidgets({super.key, required this.children});
   @override
   _SineWaveWidgetsState createState() => _SineWaveWidgetsState();
 }
 
 class _SineWaveWidgetsState extends State<SineWaveWidgets> {
-  // The number of widgets you want to display along the sine wave.
-  int numberOfWidgets = 10;
-
   @override
   Widget build(BuildContext context) {
-    
+    final int numberOfWidgets = widget.children.length;
     return SizedBox(
       width: double.infinity,
       height: numberOfWidgets * 60,
@@ -130,7 +171,8 @@ class _SineWaveWidgetsState extends State<SineWaveWidgets> {
             (index) {
               double yScale = 2;
               // Calculate the horizontal x position.
-              double yPos =  yScale * (index / (numberOfWidgets - 1)) *
+              double yPos = yScale *
+                  (index / (numberOfWidgets - 1)) *
                   MediaQuery.of(context).size.width;
 
               // Calculate the sine wave value for the given x position.
@@ -142,9 +184,7 @@ class _SineWaveWidgetsState extends State<SineWaveWidgets> {
                   (1 - sineValue) * 60;
 
               return Positioned(
-                top: yPos,
-                left: xPos,
-                child: Step());
+                  top: yPos, left: xPos, child: widget.children[index]);
             },
           ),
         ),
