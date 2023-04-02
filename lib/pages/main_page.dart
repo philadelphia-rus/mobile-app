@@ -43,40 +43,39 @@ class _MainPageState extends State<MainPage> {
     return SafeArea(
       child: Container(
         height: MainPage.navBarHeight,
-        padding: EdgeInsets.symmetric(horizontal: 10),
         child: GNav(
-              backgroundColor: const Color(0xFFF8FBFF),
-              color: const Color(0xFF8F939E),
-              activeColor: const Color(0xFFFFFFFF),
-              tabBackgroundColor: AppColors.color7e56e8,
-              tabBorderRadius: 100,
-              iconSize: 20,
-              gap: 8,
-              padding: EdgeInsets.all(16),
-              duration: Duration(milliseconds: 450),
-              tabs: const [
-                GButton(
-                  icon: Icons.settings_accessibility_rounded,
-                  text: "Путь",
-                ),
-                GButton(
-                  icon: Icons.home,
-                  text: "Лидборд",
-                ),
-                GButton(
-                  icon:  Icons.chat,
-                  text: "Квесты",
-                ),
-                GButton(
-                  icon:  Icons.chat,
-                  text: "База знаний",
-                ),
-              ],
-              selectedIndex:  _currentIndex,
-              onTabChange: (index) => _onItemTapped(context, MenuRoute.values[index]),
+          backgroundColor: const Color(0xFFF8FBFF),
+          color: const Color(0xFF8F939E),
+          activeColor: const Color(0xFFFFFFFF),
+          tabBackgroundColor: AppColors.color7e56e8,
+          tabBorderRadius: 100,
+          iconSize: 20,
+          gap: 8,
+          padding: EdgeInsets.all(16),
+          duration: Duration(milliseconds: 450),
+          tabs: const [
+            GButton(
+              icon: Icons.settings_accessibility_rounded,
+              text: "Путь",
             ),
+            GButton(
+              icon: Icons.home,
+              text: "Лидборд",
+            ),
+            GButton(
+              icon: Icons.chat,
+              text: "Квесты",
+            ),
+            GButton(
+              icon: Icons.chat,
+              text: "База знаний",
+            ),
+          ],
+          selectedIndex: _currentIndex,
+          onTabChange: (index) =>
+              _onItemTapped(context, MenuRoute.values[index]),
+        ),
       ),
     );
   }
 }
-

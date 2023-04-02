@@ -120,7 +120,7 @@ class StepWidget extends StatelessWidget {
         SizedBox(
           width: 5,
         ),
-        Text(name, style: TextStyle(fontSize: 18, fontFamily: 'VarelaRound')),
+        Text(name, style: TextStyle(fontSize: 14, fontFamily: 'VarelaRound')),
       ],
     );
   }
@@ -140,12 +140,13 @@ class StepWidget extends StatelessWidget {
     if (type == 'MDFILE') {
       // URL OPEN
       return context.go('Routes.mdfile');
-    }else if (type == 'QUESTIONS') {
+    } else if (type == 'QUESTIONS') {
       return context.go('Routes.quiestion');
     } else if (type == 'VIDEO') {
       //URL open
-     return context.go('Routes.quiestion');
-    };
+      return context.go('Routes.quiestion');
+    }
+    ;
   }
 }
 
@@ -163,13 +164,13 @@ class _SineWaveWidgetsState extends State<SineWaveWidgets> {
     final int numberOfWidgets = widget.children.length;
     return SizedBox(
       width: double.infinity,
-      height: numberOfWidgets * 60,
+      height: numberOfWidgets * 80,
       child: CustomPaint(
         child: Stack(
           children: List.generate(
             numberOfWidgets,
             (index) {
-              double yScale = 2;
+              double yScale = 0.6;
               // Calculate the horizontal x position.
               double yPos = yScale *
                   (index / (numberOfWidgets - 1)) *
@@ -180,7 +181,7 @@ class _SineWaveWidgetsState extends State<SineWaveWidgets> {
                   .sin(2 * math.pi * yPos / MediaQuery.of(context).size.width);
 
               // Map the sine value to a y position within the available height.
-              double xPos = (MediaQuery.of(context).size.width / 2 - 120) +
+              double xPos = (MediaQuery.of(context).size.width / 2 - 130) +
                   (1 - sineValue) * 60;
 
               return Positioned(

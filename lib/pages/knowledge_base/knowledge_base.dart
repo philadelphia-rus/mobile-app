@@ -63,6 +63,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
               },
             ),
           ),
+          _Header(),
           Align(
             alignment: Alignment.bottomLeft,
             child: Container(
@@ -73,8 +74,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
               child: Row(
                 children: <Widget>[
                   GestureDetector(
-                    onTap: () {
-                    },
+                    onTap: () {},
                     child: Container(
                       height: 30,
                       width: 30,
@@ -129,10 +129,9 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
 
   void _addMessage(ChatMessage m) {
     setState(() {
-        print(1);
-        messages.insert(0, m);
-      });
-
+      print(1);
+      messages.insert(0, m);
+    });
   }
 
   void _handleSendPressed(String message) async {
@@ -167,17 +166,23 @@ class _Header extends StatelessWidget {
     return Container(
       height: 60,
       color: AppColors.color7e56e8,
-      child: Row(
+      child: Stack(
         children: [
-          Material(
-            color: Colors.white,
+          Align(
+            alignment: Alignment.centerLeft,
             child: IconButton(
-              icon: const Icon(Icons.person),
-              tooltip: 'Logout',
+              icon: const Icon(
+                Icons.person,
+                color: Colors.white,
+              ),
               onPressed: () {
                 context.push(Routes.profile);
               },
             ),
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: Text('Hr AI', style: TextStyle(fontFamily: 'VarelaRound', fontSize: 20, color: Colors.white),)
           ),
         ],
       ),

@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:meta/meta.dart';
 
-import '../../../models/unit_model.dart';
+import '../../../models/unit.dart';
 import '../../../service/road_service.dart';
 import '../../../ui/unit_widget.dart';
 

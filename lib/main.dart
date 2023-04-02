@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:mobile_app/pages/knowledge_base/knowledge_base.dart';
 import 'package:mobile_app/pages/leaders/leaders.dart';
 import 'package:mobile_app/pages/profile/profile_page.dart';
+import 'package:mobile_app/pages/profile/qr_code_page.dart';
 import 'package:mobile_app/pages/quests/quests.dart';
 import 'package:mobile_app/pages/welcome/welcome_page.dart';
 
@@ -106,6 +107,15 @@ class MyApp extends StatelessWidget {
               context: context,
               state: state,
               child: ProfilePage(),
+            ),
+          ),
+          GoRoute(
+            parentNavigatorKey: _rootNavigatorKey,
+            path: Routes.qrCode,
+            pageBuilder: (context, state) => buildPageWithPopupTransition<void>(
+              context: context,
+              state: state,
+              child: QrCode(),
             ),
           ),
         ],

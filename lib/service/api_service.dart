@@ -23,6 +23,7 @@ class APIService {
         ),
       );
       print('${url[index]}/$request');
+      print('$response');
       debugPrint(response.toString());
       if (response.statusCode == 200) {
         return response.data;

@@ -10,7 +10,9 @@ abstract class Routes {
   static const String knowledgeBase = '/knowledgeBase';
 
     static const String profile = '/knowledgeBase/profile';
+static const String qrCode = '/knowledgeBase/profile/qrCode';
 }
+
 
 enum MenuRoute {
   road('/road'),

@@ -14,7 +14,7 @@ class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});
 
   final authService = Injector().get<AuthService>();
-  final String username = 'admin';
+  final String username = 'Admin31';
 
   @override
   Widget build(BuildContext context) {
@@ -31,16 +31,15 @@ class ProfilePage extends StatelessWidget {
             return SafeArea(
               child: Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
+                    const EdgeInsets.symmetric(horizontal: 15.0, vertical: 50),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Icon(
                           Icons.edit,
-                          size: 40,
+                          size: 30,
                           color: AppColors.color7e56e8,
                         ),
                       ],
@@ -51,15 +50,73 @@ class ProfilePage extends StatelessWidget {
                     CircleAvatar(
                       backgroundColor: Colors.amber,
                       child: Icon(Icons.person,
-                          size: 40, color: AppColors.color7e56e8),
+                          size: 30, color: AppColors.color7e56e8),
                       radius: 150.0,
                     ),
                     SizedBox(
                       height: 20,
                     ),
-                    Text('@$username'),
+                    Text(
+                      '@$username',
+                      style:
+                          TextStyle(fontSize: 20, fontFamily: AppColors.nunito),
+                    ),
                     SizedBox(
                       height: 20,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          '----- Статистика -----',
+                          style: TextStyle(
+                              fontSize: 20, fontFamily: AppColors.nunito),
+                        ),
+                        Text(
+                          'Баланс: 500 руб.',
+                          style: TextStyle(
+                              fontSize: 20, fontFamily: AppColors.nunito),
+                        ),
+                        Text(
+                          'Опыт: 150 exp',
+                          style: TextStyle(
+                              fontSize: 20, fontFamily: AppColors.nunito),
+                        ),
+                        Text(
+                          '----------------------',
+                          style: TextStyle(
+                              fontSize: 20, fontFamily: AppColors.nunito),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 50.0),
+                      child: InkWell(
+                        onTap: () {
+                          context.push(Routes.qrCode);
+                        },
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Icon(Icons.qr_code),
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Text('Qr-code'),
+                                Spacer(),
+                                Icon(Icons.chevron_right_rounded)
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 50.0),
