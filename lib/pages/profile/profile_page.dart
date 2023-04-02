@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_simple_dependency_injection/injector.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../service/auth_service.dart';
+import '../../service/api_requests.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_routes.dart';
 import 'bloc/profile_bloc.dart';

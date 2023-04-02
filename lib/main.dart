@@ -11,7 +11,7 @@ import 'pages/auth/sign_in_page.dart';
 import 'pages/auth/sign_up_page.dart';
 import 'pages/main_page.dart';
 import 'pages/road/road.dart';
-import 'service/auth_service.dart';
+import 'service/api_requests.dart';
 import 'utils/app_module_container.dart';
 import 'utils/app_routes.dart';
 

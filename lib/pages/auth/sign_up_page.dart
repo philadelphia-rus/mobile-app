@@ -5,7 +5,7 @@ import 'package:flutter_simple_dependency_injection/injector.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile_app/ui/text_fields.dart';
 
-import '../../service/auth_service.dart';
+import '../../service/api_requests.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_routes.dart';
 import 'bloc/sign_up_bloc.dart';

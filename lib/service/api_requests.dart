@@ -100,4 +100,29 @@ class AuthService {
     _token = '';
     await prefs.setString('token', _token);
   }
+
+  static Future<String> askNeuralNetwork({
+    required String message,
+  }) async {
+    String _answer = '';
+    dynamic data = await APIService.postRequest(
+      index: 1,
+      request: 'ask',
+      queryParameters: {
+        'query': message,
+      },
+    );
+    try {
+      if (data != '' && data['answer'] != '') {
+        _answer = data['answer'];
+        print(_answer);
+        return _answer;
+      }
+    } catch (e) {
+      print(e);
+      return 'Ошибка';
+    }
+
+    return 'Ошибка';
+  }
 }
